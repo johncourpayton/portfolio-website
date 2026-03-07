@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --bg-color: #0a0a0a;
+  /* Pure black */
+  --surface-color: rgba(30, 30, 30, 0.7);
+  /* Translucent for glassmorphism */
+  --surface-border: rgba(255, 255, 255, 0.1);
+  /* Subtle light borders */
+  --text-active: #abb2bf;
+  /* One Dark base text */
+  --text-muted: #5c6370;
+  /* Dim grey for comments */
+  --accent-keyword: #c678dd;
+  /* Vibrant purple */
+  --accent-string: #98c379;
+  /* Vibrant green */
+  --accent-function: #61afef;
+  /* Bright blue */
+  --accent-variable: #e5c07b;
+  /* Amber/Yellow variables */
+  --accent-control: #c678dd;
+  /* Purple */
+  --accent-number: #d19a66;
+  /* Orange */
+  --font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-color);
+  background-attachment: fixed;
+  color: var(--text-active);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 2rem 4rem;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+
+
+/* Vue Router Transition Animations */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* VS Code Panel styling */
+.glass-panel {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(97, 175, 239, 0.1);
+}
+
+/* Global Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  /* Very square, like VS Code */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--text-active);
+  color: var(--bg-color);
+}
+
+.btn-primary:hover {
+  background: var(--text-muted);
+}
+
+.btn-outline {
+  background: #3c3c3c;
+  /* VS Code Secondary Dropdown/Button */
+  color: #cccccc;
+  border: 1px solid #3c3c3c;
+}
+
+.btn-outline:hover {
+  background: #505050;
+  color: #ffffff;
+  border-color: #505050;
+}
