@@ -147,5 +147,17 @@
   color: var(--text-active);
 }
 
+@media (max-width: 768px) {
+  .file-item {
+    padding: 0.75rem 1rem;
+  }
+  .profile-name {
+    font-size: 1.25rem;
+  }
+  .profile-bio {
+    font-size: 1rem;
+  }
+}
+
 /* Removing old highlight CSS */
 </style>

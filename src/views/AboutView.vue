@@ -265,8 +265,8 @@ onMounted(() => {
 
 pre {
   margin: 0;
-  white-space: pre-wrap;
-  word-break: break-word;
+  white-space: pre;
+  word-break: normal;
   outline: none; /* remove focus outline when typing */
   min-height: 100%;
   font-family: inherit;
@@ -451,10 +451,14 @@ code {
     border-radius: 4px;
   }
   .line-numbers {
-    padding: 0 0.75rem;
+    padding: 0 0.5rem;
+    font-size: 0.8rem;
   }
   .code-editor {
-    padding-left: 0.75rem;
+    padding-left: 0.5rem;
+  }
+  pre {
+    font-size: 0.8rem;
   }
 }
 </style>

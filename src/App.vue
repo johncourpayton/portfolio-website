@@ -122,5 +122,17 @@
   .navbar {
     padding: 0.75rem 1rem;
   }
+  
+  .logo a, .logo-end span {
+    font-size: 1rem;
+  }
+  
+  .nav-item, .param-comma {
+    font-size: 1rem;
+  }
+  
+  .nav-content {
+    gap: 0.25rem;
+  }
 }
 </style>

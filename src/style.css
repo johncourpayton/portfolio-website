@@ -143,3 +143,9 @@ h3 {
   color: #ffffff;
   border-color: #505050;
 }
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 80px 1rem 2rem;
+  }
+}

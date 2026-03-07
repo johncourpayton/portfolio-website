@@ -257,5 +257,11 @@ const showToast = () => {
   .projects-grid {
     grid-template-columns: 1fr;
   }
+  .page-title {
+    font-size: 2rem;
+  }
+  .page-subtitle {
+    font-size: 1rem;
+  }
 }
 </style>
