@@ -23,7 +23,7 @@
             <span class="tech-tag">Arduino</span>
           </div>
           <div class="project-links">
-            <a href="#" class="btn btn-outline small-btn" target="_blank">View Code</a>
+            <button class="btn btn-outline small-btn" @click="showToast">View Code</button>
           </div>
         </div>
       </article>
@@ -42,7 +42,7 @@
             <span class="tech-tag">Google Gen AI</span>
           </div>
           <div class="project-links">
-            <a href="#" class="btn btn-outline small-btn" target="_blank">View Code</a>
+            <button class="btn btn-outline small-btn" @click="showToast">View Code</button>
           </div>
         </div>
       </article>
@@ -61,7 +61,7 @@
             <span class="tech-tag">Tech 3</span>
           </div>
           <div class="project-links">
-            <a href="#" class="btn btn-outline small-btn" target="_blank">View Code</a>
+            <button class="btn btn-outline small-btn" @click="showToast">View Code</button>
           </div>
         </div>
       </article>
@@ -79,16 +79,35 @@
             <span class="tech-tag">Tech 2</span>
           </div>
           <div class="project-links">
-            <a href="#" class="btn btn-outline small-btn" target="_blank">View Code</a>
+            <button class="btn btn-outline small-btn" @click="showToast">View Code</button>
           </div>
         </div>
       </article>
 
     </div>
+
+    <!-- Coming Soon Toast -->
+    <transition name="fade-toast">
+      <div v-if="toastVisible" class="coming-soon-toast">
+        <span class="toast-icon">🚧</span> Coming Soon
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const toastVisible = ref(false);
+let toastTimer = null;
+
+const showToast = () => {
+  toastVisible.value = true;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toastVisible.value = false;
+  }, 2000);
+};
 </script>
 
 <style scoped>
@@ -199,6 +218,39 @@
 .small-btn {
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.coming-soon-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.95);
+  color: var(--text-active);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  z-index: 9999;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.fade-toast-enter-active,
+.fade-toast-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.fade-toast-enter-from,
+.fade-toast-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
 }
 
 @media (max-width: 768px) {
