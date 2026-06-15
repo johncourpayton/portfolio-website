@@ -27,7 +27,7 @@
         </div>
         <div class="project">
           <span class="project-title">Math Solver</span>
-          <p>To help students intuitively understand complex math concepts, I built a full-stack edu-tech web application that provides step-by-step solutions for problems ranging from basic arithmetic to linear algebra and calculus. By using Pix2Text OCR to extract mathematical equations from uploaded images and passing that text to the Google Gen AI API to generate solution steps, the Python-based application successfully breaks down complex problems into accessible, guided walkthroughs. <a href="#" @click.prevent="currentView = 'math-solver'">[more]</a></p>
+          <p>To help students intuitively understand complex math concepts, I built a full-stack edu-tech web application that provides step-by-step solutions for problems ranging from basic arithmetic to linear algebra and calculus. By using Pix2Text OCR to extract mathematical equations from uploaded images and passing that text to the Google Gen AI API to generate solution steps, the Python-based application successfully breaks down complex problems into accessible, guided walkthroughs. <a href="https://github.com/johncourpayton/MathSolver" target="_blank">[Code]</a></p>
         </div>
       </section>
 
@@ -47,10 +47,13 @@
       <section>
         <h2>Artificial Bin-telligence</h2>
         <p><a href="#" @click.prevent="currentView = 'home'">[back to projects]</a></p>
-        <p>Here is an inside look at the hardware and sorting mechanisms powering the fully autonomous waste sorting system.</p>
+        <p>Inside look into the team and our prototyping and building process</p>
         
-        <div class="image-placeholder">[Image 1 Placeholder: Hardware Setup / Sony IMX500]</div>
-        <div class="image-placeholder">[Image 2 Placeholder: The Sorting Mechanism]</div>
+        <img src="/IMG_5362.jpeg" alt="Hardware Setup / Sony IMX500" class="project-image" />
+        <p class="image-caption">Team picture at Giles T. Brown Research Symposium Presentation</p>
+        
+        <img src="/IMG_5310.jpeg" alt="The Sorting Mechanism" class="project-image" />
+        <p class="image-caption">Spaghetti prototyping during testing</p>
       </section>
     </div>
 
@@ -74,7 +77,10 @@
         <p>An inside look at the hardware build and maze-solving algorithms powering the autonomous micromouse.</p>
         
         <img src="/micromouse.jpg" alt="Micromouse Hardware" class="project-image" />
-        <img src="/mms_maze.jpg" alt="Maze Solving Algorithm Testing" class="project-image" />
+        <p class="image-caption">Component layout and design process</p>
+        
+        <img src="/IMG_0412.jpeg" alt="Maze Solving Algorithm Testing" class="project-image" />
+        <p class="image-caption">Soldering components to prototype board for testing</p>
       </section>
     </div>
 
