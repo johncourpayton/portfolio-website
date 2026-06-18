@@ -23,7 +23,7 @@
         </div>
         <div class="project">
           <span class="project-title">Artificial Bin-telligence (Autonomous Waste Sorting System)</span>
-          <p>To eliminate manual waste sorting, I engineered a fully autonomous device that coordinates ultrasonic sensors with stepper and servo motors via a Raspberry Pi and Arduino serial pipeline. By deploying an optimized YOLOv11 model directly to the Sony IMX500 sensor, the system drives a highly synchronized, event-based control loop that physically sorts trash, compost, and recycling into distinct compartments with 80% classification accuracy. <a href="#" @click.prevent="currentView = 'bin-telligence'">[more]</a></p>
+          <p>To eliminate manual waste sorting, I engineered an autonomous device that automatically classifies and physically separates trash, compost, and recycling into distinct compartments. The system operates on a highly synchronized, event-based control loop powered by a Raspberry Pi and Arduino serial pipeline. By deploying an optimized YOLOv11 computer vision model directly onto a Sony IMX500 sensor, the device successfully identifies and routes waste with an 80% classification accuracy using a coordinated system of ultrasonic sensors, stepper motors, and servo motors. <a href="#" @click.prevent="currentView = 'bin-telligence'">[more]</a></p>
         </div>
         <div class="project">
           <span class="project-title">Math Solver</span>
