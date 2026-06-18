@@ -11,6 +11,7 @@
         </div>
       </div>
       <p>Computer Engineering Student @ Orange Coast College</p>
+      <p class="bio">I design and build autonomous systems, bridging the gap between high-level software and low-level hardware control. Currently, I'm a transfer student at OCC pursuing Associate degrees in Computer Science, Mathematics, and Physics, with plans to transfer in Spring 2027 for a BS in Computer Engineering. Beyond classes, I lead the campus Micro Mouse robotics club, build embedded software for OC Robotics (University Rover Challenge), and explore edge computer vision deployment. In my free time, I enjoy getting outdoors to play golf, hike, camp, and snowboard in the winter.</p>
     </header>
 
     <!-- Home View -->
@@ -23,7 +24,7 @@
         </div>
         <div class="project">
           <span class="project-title">Artificial Bin-telligence (Autonomous Waste Sorting System)</span>
-          <p>To eliminate manual waste sorting, I engineered an autonomous device that automatically classifies and physically separates trash, compost, and recycling into distinct compartments. The system operates on a highly synchronized, event-based control loop powered by a Raspberry Pi and Arduino serial pipeline. By deploying an optimized YOLOv11 computer vision model directly onto a Sony IMX500 sensor, the device successfully identifies and routes waste with an 80% classification accuracy using a coordinated system of ultrasonic sensors, stepper motors, and servo motors. <a href="#" @click.prevent="currentView = 'bin-telligence'">[more]</a></p>
+          <p>To eliminate manual waste sorting, I engineered an autonomous device that automatically classifies and physically separates trash, compost, and recycling into distinct compartments. The system operates on a highly synchronized, event-based control loop powered by a Raspberry Pi and Arduino serial pipeline. By deploying an optimized YOLOv11 computer vision model directly onto a Sony IMX500 sensor, the device successfully identifies and routes waste with an 80% classification accuracy using a coordinated system of ultrasonic sensors, stepper motors, and servo motors. <a href="https://bintelligence-front-end.vercel.app/" target="_blank">[Website]</a> <a href="#" @click.prevent="currentView = 'bin-telligence'">[more]</a></p>
         </div>
         <div class="project">
           <span class="project-title">Math Solver</span>
@@ -46,7 +47,7 @@
     <div v-else-if="currentView === 'bin-telligence'">
       <section>
         <h2>Artificial Bin-telligence</h2>
-        <p><a href="#" @click.prevent="currentView = 'home'">[back to projects]</a></p>
+        <p><a href="#" @click.prevent="currentView = 'home'">[back to projects]</a> | <a href="https://bintelligence-front-end.vercel.app/" target="_blank">[website]</a></p>
         <p>Inside look into the team and our prototyping and building process</p>
         
         <img src="/IMG_5362.jpeg" alt="Hardware Setup / Sony IMX500" class="project-image" />
