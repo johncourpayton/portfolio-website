@@ -1,97 +1,251 @@
+<script setup>
+const links = [
+  { label: 'resume', href: '/resume.pdf' },
+  { label: 'github', href: 'https://github.com/johncourpayton' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/payton-johncour-2b403136b' },
+  { label: 'email', href: 'mailto:johncourpayton.2025@gmail.com' },
+]
+
+const projects = [
+  {
+    title: 'Bintelligence',
+    subtitle: 'Autonomous waste-sorting system',
+    meta: 'Fall 2025 \u2013 Spring 2026 \u00b7 Team Lead',
+    description:
+      "Designed, built, and tested a fully autonomous waste-sorting device that classifies trash, compost, and recycling with 80% accuracy, removing the need for manual sorting downstream. I trained a YOLOv11 model in PyTorch on our own environment-specific datasets for real-time classification, then optimized it for edge deployment on a Sony IMX500 sensor to cut inference latency and take the load off the host CPU. On the hardware side, I selected and wired the sensor and actuator stack and set up UART/USB serial communication between an Arduino motor controller and a Raspberry Pi host, so classification results trigger sorting actuation in real time through an event-based control loop written in C++.",
+    link: { label: 'website', href: 'https://bintelligence-front-end.vercel.app/' },
+    image: { src: '/bintelligence-symposium.jpg', alt: 'Payton and teammates presenting Bin-telligence', caption: 'Presenting at the Giles T. Brown Research Symposium' },
+  },
+  {
+    title: 'OC Robotics Rover',
+    subtitle: 'Embedded software',
+    meta: 'Fall 2025 \u2013 Present \u00b7 Embedded Software Developer',
+    description:
+      "Implemented an iterative acceleration-ramping algorithm in C++ that incrementally steps motor velocity setpoints toward a target speed, replacing abrupt on/off control and eliminating mechanical stress on the drivetrain's joints. I manage the shared codebase with the team through GitHub, using issue tracking to identify, assign, and resolve bugs together.",
+    link: null,
+    image: null,
+  },
+  {
+    title: 'Micromouse Autonomous Robotics',
+    subtitle: 'Micro Mouse @ OCC',
+    meta: 'Jan 2026 \u2013 Present \u00b7 Founder',
+    description:
+      "There wasn't a robotics club at OCC for students who wanted to build hands-on, so I started one \u2014 membership has grown to 20+ active students. I run the weekly workshops myself, covering microcontroller programming and sensor integration, and teaching maze-solving from basic wall-following up through Flood Fill. I integrated I2C-based time-of-flight sensors into the workshop robot builds for real-time wall detection, and I've been prototyping and hand-soldering PCBs for the club's robots while learning PCB design in KiCad, working toward a competition-ready board.",
+    link: { label: 'club website', href: 'https://occmicromouse.space/' },
+    image: { src: '/micromouse-hardware.jpg', alt: 'The micromouse hardware, mid-build', caption: 'The micromouse hardware, mid-build' },
+  },
+  {
+    title: 'Math Solver',
+    subtitle: 'AI-powered problem solving web app',
+    meta: '2025 \u00b7 1st of 25 submissions',
+    description:
+      "A full-stack web app (Next.js, Python, Flask) that automates recognition and step-by-step solving of math and physics problems. Pix2Text extracts the equation from an image into LaTeX, and Google's Gemini API generates the solution \u2014 chaining OCR with LLM reasoning into a single pipeline that runs in under 60 seconds. Live-demoed to a judging panel and won 1st place out of 25 submissions, plus a $500 scholarship for Best Overall Project.",
+    link: { label: 'code', href: 'https://github.com/johncourpayton/MathSolver' },
+    image: null,
+  },
+]
+
+const skills = [
+  { label: 'Languages', value: 'C, C++, Python, Java, Bash' },
+  { label: 'Frameworks & libraries', value: 'Next.js, React, Flask, PyTorch, OpenCV' },
+  { label: 'Hardware & PCB', value: 'Microcontrollers, embedded systems, KiCad, I2C, UART, USB, additive manufacturing' },
+  { label: 'CAD', value: 'Fusion 360, SolidWorks' },
+  { label: 'Tools & platforms', value: 'Git/GitHub, VS Code, Unix/Linux, Vercel' },
+]
+</script>
+
 <template>
-  <div>
-    <header>
-      <div class="header-top">
-        <h1><a href="#" @click.prevent="currentView = 'home'" class="no-underline">Payton Johncour</a></h1>
-        <div class="header-links">
-          <a href="/resume.pdf" target="_blank">resume.pdf</a> | 
-          <a href="https://github.com/johncourpayton" target="_blank">github</a> | 
-          <a href="https://www.linkedin.com/in/payton-johncour-2b403136b" target="_blank">linkedin</a> | 
-          <a href="mailto:johncourpayton.2025@gmail.com">email</a>
-        </div>
-      </div>
-      <p>Computer Engineering Student @ Orange Coast College</p>
-      <p class="bio">I design and build autonomous systems, bridging the gap between high-level software and low-level hardware control. Currently, I'm a transfer student at OCC pursuing Associate degrees in Computer Science, Mathematics, and Physics, with plans to transfer in Spring 2027 for a BS in Computer Engineering. Beyond classes, I lead the campus Micro Mouse robotics club, build embedded software for OC Robotics (University Rover Challenge), and explore edge computer vision deployment. In my free time, I enjoy getting outdoors to play golf, hike, camp, and snowboard in the winter.</p>
+  <div class="page">
+    <header class="header">
+      <h1>Payton Johncour</h1>
+      <p class="header__role">Computer Engineering Student &middot; Irvine, CA</p>
+      <p class="header__links">
+        <template v-for="(link, i) in links" :key="link.href">
+          <a :href="link.href" target="_blank" rel="noopener">{{ link.label }}</a>
+          <span v-if="i < links.length - 1"> &middot; </span>
+        </template>
+      </p>
+      <p class="header__bio">
+        I design and build autonomous systems that live at the intersection
+        of software and hardware &mdash; code that has to work, because a
+        motor, sensor, or microcontroller is on the other end of it. I'm a
+        transfer student at Orange Coast College working toward degrees in
+        Computer Science, Mathematics, and Physics, on my way to UC Irvine
+        for a B.S. in Computer Engineering.
+      </p>
     </header>
 
-    <!-- Home View -->
-    <div v-if="currentView === 'home'">
-      <section>
-        <h2>Projects</h2>
-        <div class="project">
-          <span class="project-title">Micromouse Autonomous Robotics</span>
-          <p>To prepare student teams for autonomous robotics competitions, I founded the Micro Mouse club at Orange Coast College. I am currently building and programming a fully autonomous micromouse system while facilitating weekly technical workshops on microcontroller programming, sensor integration, and maze-solving algorithms for over 20 active members. <a href="https://occmicromouse.space/" target="_blank">[Club Website]</a> <a href="#" @click.prevent="currentView = 'micromouse'">[more]</a></p>
+    <section class="section">
+      <h2>Projects</h2>
+      <div class="projects">
+        <article class="project" v-for="p in projects" :key="p.title">
+          <div class="project__head">
+            <div class="project__title-row">
+              <h3>{{ p.title }}</h3>
+              <a
+                v-if="p.link"
+                class="project__link"
+                :href="p.link.href"
+                target="_blank"
+                rel="noopener"
+              >{{ p.link.label }} &#8599;</a>
+            </div>
+            <p class="project__subtitle">{{ p.subtitle }}</p>
+            <p class="project__meta">{{ p.meta }}</p>
+          </div>
+          <p class="project__description">{{ p.description }}</p>
+          <figure v-if="p.image" class="project__figure">
+            <img :src="p.image.src" :alt="p.image.alt" loading="lazy" />
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <div class="skills__row" v-for="s in skills" :key="s.label">
+          <dt>{{ s.label }}</dt>
+          <dd>{{ s.value }}</dd>
         </div>
-        <div class="project">
-          <span class="project-title">Artificial Bin-telligence (Autonomous Waste Sorting System)</span>
-          <p>To eliminate manual waste sorting, I engineered an autonomous device that automatically classifies and physically separates trash, compost, and recycling into distinct compartments. The system operates on a highly synchronized, event-based control loop powered by a Raspberry Pi and Arduino serial pipeline. By deploying an optimized YOLOv11 computer vision model directly onto a Sony IMX500 sensor, the device successfully identifies and routes waste with an 80% classification accuracy using a coordinated system of ultrasonic sensors, stepper motors, and servo motors. <a href="https://bintelligence-front-end.vercel.app/" target="_blank">[Website]</a> <a href="#" @click.prevent="currentView = 'bin-telligence'">[more]</a></p>
-        </div>
-        <div class="project">
-          <span class="project-title">Math Solver</span>
-          <p>To help students intuitively understand complex math concepts, I built a full-stack edu-tech web application that provides step-by-step solutions for problems ranging from basic arithmetic to linear algebra and calculus. By using Pix2Text OCR to extract mathematical equations from uploaded images and passing that text to the Google Gen AI API to generate solution steps, the Python-based application successfully breaks down complex problems into accessible, guided walkthroughs. <a href="https://github.com/johncourpayton/MathSolver" target="_blank">[Code]</a></p>
-        </div>
-      </section>
+      </dl>
+    </section>
 
-      <section>
-        <h2>Skills &amp; Tools</h2>
-        <ul>
-          <li><strong>Languages &amp; Coursework:</strong> C++, C, Python, Data Structures, Discrete Structures</li>
-          <li><strong>Frameworks &amp; AI:</strong> OpenCV, TensorFlow, PyTorch, ROS 2</li>
-          <li><strong>Hardware:</strong> NVIDIA Jetson Orin Nano, STM32, Raspberry Pi, Arduino</li>
-          <li><strong>Tools:</strong> VSCode, ArduinoIDE, STM32Cube, Fusion360, SolidWorks, Shaper3D, GitHub</li>
-        </ul>
-      </section>
-    </div>
-
-    <!-- Bin-telligence Detail View -->
-    <div v-else-if="currentView === 'bin-telligence'">
-      <section>
-        <h2>Artificial Bin-telligence</h2>
-        <p><a href="#" @click.prevent="currentView = 'home'">[back to projects]</a> | <a href="https://bintelligence-front-end.vercel.app/" target="_blank">[website]</a></p>
-        <p>Inside look into the team and our prototyping and building process</p>
-        
-        <img src="/IMG_5362.jpeg" alt="Hardware Setup / Sony IMX500" class="project-image" />
-        <p class="image-caption">Team picture at Giles T. Brown Research Symposium Presentation</p>
-        
-        <img src="/IMG_5310.jpeg" alt="The Sorting Mechanism" class="project-image" />
-        <p class="image-caption">Spaghetti prototyping during testing</p>
-      </section>
-    </div>
-
-    <!-- Math Solver Detail View -->
-    <div v-else-if="currentView === 'math-solver'">
-      <section>
-        <h2>Math Solver</h2>
-        <p><a href="#" @click.prevent="currentView = 'home'">[back to projects]</a></p>
-        <p>An inside look at the OCR and Google Gen AI pipeline that powers the step-by-step math solver.</p>
-        
-        <div class="image-placeholder">[Image 1 Placeholder: App Interface / OCR Scan]</div>
-        <div class="image-placeholder">[Image 2 Placeholder: Step-by-Step Breakdown]</div>
-      </section>
-    </div>
-
-    <!-- Micromouse Detail View -->
-    <div v-else-if="currentView === 'micromouse'">
-      <section>
-        <h2>Micromouse Autonomous Robotics</h2>
-        <p><a href="#" @click.prevent="currentView = 'home'">[back to projects]</a> | <a href="https://occmicromouse.space/" target="_blank">[club website]</a></p>
-        <p>An inside look at the hardware build and maze-solving algorithms powering the autonomous micromouse.</p>
-        
-        <img src="/micromouse.jpg" alt="Micromouse Hardware" class="project-image" />
-        <p class="image-caption">Component layout and design process</p>
-        
-        <img src="/IMG_0412.jpeg" alt="Maze Solving Algorithm Testing" class="project-image" />
-        <p class="image-caption">Soldering components to prototype board for testing</p>
-      </section>
-    </div>
-
+    <section class="section">
+      <h2>Education</h2>
+      <p class="education">
+        University of California, Irvine &mdash; B.S. Computer Engineering (Transfer) &middot; Expected May 2029<br />
+        Orange Coast College &mdash; A.S. Computer Science, Physics, Mathematics &middot; GPA 3.8 &middot; May 2027<br />
+        Coursework: Data Structures &amp; Algorithms, Object-Oriented Programming (C++), Engineering Circuits.
+      </p>
+    </section>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-const currentView = ref('home')
-</script>
-
 <style scoped>
+.page {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 5.5rem) var(--edge) 5rem;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+}
+
+.header__role {
+  color: var(--ink-mid);
+  margin-top: 0.4rem;
+}
+
+.header__links {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.header__links span {
+  color: var(--ink-faint);
+}
+
+.header__bio {
+  margin-top: 1.6rem;
+  max-width: 56ch;
+  color: var(--ink);
+}
+
+.section {
+  margin-top: 3.5rem;
+}
+
+.section h2 {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.project {
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.project:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.project__title-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.project__head h3 {
+  font-size: 1.08rem;
+}
+
+.project__link {
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+  white-space: nowrap;
+}
+
+.project__link:hover,
+.project__link:focus-visible {
+  color: var(--ink);
+}
+
+.project__subtitle {
+  color: var(--ink-mid);
+  font-size: 0.92rem;
+  margin-top: 0.2rem;
+}
+
+.project__meta {
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.project__description {
+  margin-top: 0.9rem;
+  max-width: 62ch;
+}
+
+.project__figure {
+  margin-top: 1.1rem;
+  max-width: 420px;
+}
+
+.skills__row {
+  display: grid;
+  grid-template-columns: 11.5rem 1fr;
+  gap: 1rem;
+  padding: 0.55rem 0;
+}
+
+.skills__row dt {
+  color: var(--ink-mid);
+  font-size: 0.9rem;
+}
+
+.skills__row dd {
+  margin: 0;
+}
+
+.education {
+  max-width: 56ch;
+}
+
+@media (max-width: 520px) {
+  .skills__row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
 </style>
